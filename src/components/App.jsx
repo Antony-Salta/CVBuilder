@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import InputFields from './InputFields'
 import { initialSections } from './initialSections'
-import './App.css'
+import '../App.css'
 import CVOutput from './CVOutput'
 
 
@@ -15,10 +15,14 @@ function App()
   const [sectionText, setSectionText] = useState(initialSectionText);
     
   return(
-        <>
-        <InputFields sectionText={sectionText} setSectionText={setSectionText} />
-        <CVOutput sectionText={sectionText}/>
-        </>
+        <div className='flex-container'>
+          <div className='flex-child'>
+            <InputFields sectionText={sectionText} setSectionText={setSectionText} />
+          </div>
+          <div className='flex-child'>
+            <CVOutput sectionText={sectionText}/>
+          </div>
+        </div>
     )
 }
 

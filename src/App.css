@@ -40,3 +40,28 @@
 .read-the-docs {
   color: #888;
 }
+
+.flex-container{
+  display: flex;
+}
+.flex-child{
+  flex: 1;
+  border: 2px solid red;
+  margin: 5px;
+}
+.flex-child:first-child {
+  margin-right: 20px;
+}
+.CV-wrap{
+  text-align: left;
+  justify-content: left;
+  white-space: pre-line;
+  text-wrap: wrap;
+  word-wrap: break-word;
+  max-width: 40em;
+}
+
+textarea{
+  height: 10em;
+  width: 20em;
+}

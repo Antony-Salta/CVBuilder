@@ -1,6 +1,8 @@
 
 import { useState, useRef } from 'react';
 import { initialSections } from './initialSections';
+import SectionButtons from './SectionButtons';
+import SectionInput from './SectionInput';
 /**
  * 
  * @param {*} sectionText will be an list of objects containing section ID's and their correpsonding title and main content
@@ -47,15 +49,25 @@ export default function InputFields({sectionText, setSectionText})
   function handleTextAreaChange(id, isMain, event)
   {
     let newText = event.target.value;
-    let newSectionText = isMain === true 
-    ? {id: id, title : sectionText[id].title, main: newText} 
-    : {id: id, title : newText, main: sectionText[id].main};
+    
     
     let index = sectionText.findIndex(section => section.id === id);
     if(index === -1)
+    {
+      let newSectionText = isMain === true 
+      ? {id: id, title : "", main: newText} 
+      : {id: id, title : newText, main: ""};
+    
       setSectionText([...sectionText, newSectionText]);
+    }
     else
+    {
+      let newSectionText = isMain === true 
+      ? {id: id, title : sectionText[index].title, main: newText} 
+      : {id: id, title : newText, main: sectionText[index].main};
       setSectionText(sectionText.toSpliced(index, 1, newSectionText));
+    }
+      
   
   }
   
@@ -71,32 +83,4 @@ export default function InputFields({sectionText, setSectionText})
 
   </div>)
 }
-
-
-
-function SectionInput({ id, handleInput, title = null, needsName = false, AddSection = null, DeleteSection = null})
-  {
-      return(
-          <div>
-          {needsName === true ? <> <h3>Section Title</h3> <textarea name = "Section title"onChange={(event) => handleInput(id, false, event)} /></> : <h2>{title}</h2>}
-          <br></br> 
-          {needsName === true && <p>Section Content</p>}
-          <textarea name = "Section Content" onChange={(event) => handleInput(id, true, event)}/>
-          <br></br>
-          <SectionButtons id={id} AddSection={AddSection} DeleteSection={DeleteSection} />
-          <br></br>
-          </div>
-      )
-  }
-  
-  function SectionButtons({id, AddSection = null, DeleteSection = null})
-  {
-      //The AddSection and DeleteSection not null checks makes the button only if it should be deletable/ allow a section to be made underneath
-      return(
-          <div>
-          {AddSection !== null && <button onClick={() => {AddSection(id); }}>Add Section Below</button>}
-          {DeleteSection !== null && <button onClick ={() => {DeleteSection(id); }}> Delete Section</button>}
-          </div>
-      )
-  }
 

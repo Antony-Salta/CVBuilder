@@ -3,7 +3,7 @@ export default function CVOutput({sectionText})
     //sections will be a list containing the content of the input text areas.
     // The each section will be an object containing a title and a main body text.
     return(
-        <div className="CVWrap">
+        <div className="CV-wrap">
             {sectionText.map(section =>
                 <div key={section.id} className="section">
                     <br></br>
