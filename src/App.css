@@ -52,6 +52,9 @@
 .flex-child:first-child {
   margin-right: 20px;
 }
+.flex-child:second-child {
+  background-color: white;
+}
 .CV-wrap{
   text-align: left;
   justify-content: left;
@@ -59,9 +62,14 @@
   text-wrap: wrap;
   word-wrap: break-word;
   max-width: 40em;
+  background-color: white;
+  color: black;
+}
+.CV-wrap hr{
+  color: red;
 }
 
 textarea{
   height: 10em;
-  width: 20em;
+  width: 30em;
 }
